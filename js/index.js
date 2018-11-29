@@ -51,7 +51,7 @@
       // });
   }
 
-  const draw = () => {
+  const setupContainers = () => {
     const width = Math.round(0.9 * Math.min(window.innerWidth, window.innerHeight));
     const radius = 0.5 * width;
 
@@ -62,11 +62,19 @@
 
     let canvas = document.getElementById('canvas');
     canvas.style.width = `${width}px`;
+    return { width, radius };
+  }
 
-    const container = initSVG(radius);
-    const nodes = createNodes(radius);
+  const draw = () => {
+    const sizes = setupContainers();
+    const container = initSVG(sizes.radius);
+    const nodes = createNodes(sizes.radius);
     createElements(container, nodes);
   }
+
+  window.addEventListener("resize", () => {
+    draw();
+  });
 
   draw();
 })();
