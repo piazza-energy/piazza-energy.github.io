@@ -1,6 +1,5 @@
 (() => {
-
-  const createNodes = (radius) => {
+  const createNodes = (radius, deltaAngle) => {
     let data = [
       'battery',
       'buildings',
@@ -14,7 +13,7 @@
     ];
 
     return data.map((value, index, array) => {
-      let angle = (index / (array.length / 2)) * Math.PI;
+      let angle = (index / (array.length / 2) + deltaAngle) * Math.PI;
       let src = `img/${value}.svg`;
       let x = (0.8 * radius * Math.cos(angle)) + (radius - 75);
       let y = (0.8 * radius * Math.sin(angle)) + (radius - 75);
@@ -22,13 +21,13 @@
     });
   }
 
-  const initSVG = (radius) => {
+  const initSVG = (width) => {
     let canvas = d3.select('#canvas');
     canvas.selectAll('svg').remove();
     return canvas
       .append('svg:svg')
-      .attr('width', (radius * 2))
-      .attr('height', (radius * 2));
+      .attr('width', width)
+      .attr('height', width);
   }
 
   const createElements = (container, nodes) => {
@@ -45,13 +44,9 @@
       .attr('xlink:href', function(d, i) {
         return d.src;
       });
-      // .append('g')
-      // .attr('transform', function (d, i) {
-      //   return `translate(${d.x}, ${d.y})`;
-      // });
   }
 
-  const setupContainers = () => {
+  const initSizes = () => {
     const width = Math.round(0.9 * Math.min(window.innerWidth, window.innerHeight));
     const radius = 0.5 * width;
 
@@ -65,10 +60,14 @@
     return { width, radius };
   }
 
+  const start = d3.now();
+
   const draw = () => {
-    const sizes = setupContainers();
-    const container = initSVG(sizes.radius);
-    const nodes = createNodes(sizes.radius);
+    const speed = 0.00002;
+    const deltaAngle = speed * (d3.now() - start);
+    const sizes = initSizes();
+    const container = initSVG(sizes.width);
+    const nodes = createNodes(sizes.radius, deltaAngle);
     createElements(container, nodes);
   }
 
@@ -76,5 +75,7 @@
     draw();
   });
 
-  draw();
+  let t = d3.timer(() => {
+    draw();
+  }, 500);
 })();

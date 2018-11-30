@@ -1,0 +1,24 @@
+{
+  "name": "piazza-energy.github.io",
+  "version": "1.0.0",
+  "description": "Energy Piazza Splashpage",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/uglify-es/bin/uglifyjs -c -- js/index.js > js/index.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deep-ventures/piazza-energy.github.io.git"
+  },
+  "author": "Deep.Ventures",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deep-ventures/piazza-energy.github.io/issues"
+  },
+  "homepage": "https://github.com/deep-ventures/piazza-energy.github.io#readme",
+  "devDependencies": {
+    "uglify-es": "^3.3.9"
+  },
+  "dependencies": {}
+}
