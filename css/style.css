@@ -10,6 +10,18 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 
+p {
+    margin: 0 0 5px;
+}
+
+a, a:active {
+  color: #444;
+}
+
+a:hover {
+  color: #000;
+}
+
 .small {
   font-size: 0.8rem;
 }

@@ -75,6 +75,7 @@
     draw();
   });
 
+  draw();
   let t = d3.timer(() => {
     draw();
   }, 500);
