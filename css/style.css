@@ -26,6 +26,12 @@ a:hover {
   font-size: 0.8rem;
 }
 
+ul.links {
+  list-style-type: disc;
+  text-align: left;
+  margin-left: 55px;
+}
+
 #welcome {
   position: absolute;
   text-align: center;
@@ -37,9 +43,9 @@ a:hover {
 
 #copyright {
   position: absolute;
-  text-align: right;
+  text-align: left;
   bottom: 0;
-  right: 0;
+  left: 0;
   width: 400px;
   padding: 5px;
 }
