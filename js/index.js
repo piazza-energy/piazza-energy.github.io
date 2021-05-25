@@ -52,7 +52,7 @@
 
     let welcome = document.getElementById('welcome');
     welcome.style.width = '400px';
-    welcome.style.top = `${Math.round(radius - 50)}px`
+    welcome.style.top = `${Math.round(radius - 130)}px`
     welcome.style.left = `${Math.round(window.innerWidth / 2 - 200)}px`
 
     let canvas = document.getElementById('canvas');
